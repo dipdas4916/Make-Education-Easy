@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/enrolled_teachers.css')}}" />
+    <title>enroll_teacher</title>
+</head>
+<body>
+    
+    <!-- Student Login Information-->
+    <img src="/static/logo.png" class="logo" alt="logo">
+    <h2> Enrolled Teacher </h2>
+    <img src="/static/logo.png" class="logo" id="logo1" alt="logo">
+
+    <table border=5>
+        <thead>
+            <td>Email</td>
+            <td>First Name</td>
+            <td>Last Name</td>
+            <td>Batch Location</td>
+            <td>Enrolled Subject</td>
+            
+        </thead>
+        {% for row in enrolled_teachers %}
+            <tr>
+                <td>{{ row[0] }}</td>
+                <td>{{ row[1] }}</td>
+                <td>{{ row[2] }}</td>
+                <td>{{ row[3] }}</td>
+                <td>{{ row[4] }}</td>
+                
+            </tr>
+        {% endfor %}
+    </table>
+    <br><br>
+</body>
+</html>

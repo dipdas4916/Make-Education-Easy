@@ -1,0 +1,247 @@
+*{
+    margin:0;
+    padding:0;    
+}
+
+
+.logo{
+    position: relative;
+    top:3vw;
+    left:4vw;
+    height:6vw;
+    width:8vw;
+
+    transition: all 0.2s ease-in-out;
+}
+.logo:hover{
+    transform: scale(1.5);
+    box-shadow: 0.5vw 0.5vw 0.5vw black;
+}
+
+#logo1{
+    position: relative;
+    
+    top:3vw;
+    left:32vw;
+}
+
+h2{
+    display: inline;
+    position: relative;
+    left:18vw;
+    text-align: center;
+    margin-bottom: 2vw;
+    color:#2272FF;
+    text-shadow: 0.2vw 0.2vw 0.2vw black;
+    font-weight: 900;
+    font-size: 4vw;
+    text-decoration: underline;
+    text-decoration-color:#2272FF;
+
+    box-shadow: 0.5vw 0.5vw 0.5vw  darkgrey;
+
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+table{
+    background-image: linear-gradient(red, yellow);
+    
+    position: relative;
+    top:3vw;
+    left:2vw;
+    text-align: center;
+    width:95vw;
+    border:0.5vw solid black;
+
+    box-shadow: 0.5vw 0.5vw 0.5vw black;
+}
+table th{
+    height:8vw;
+    font-weight: 800;
+    font-size:1.8vw;
+    background: linear-gradient(to right, blue,purple, black); 
+            -webkit-text-fill-color: transparent; 
+            -webkit-background-clip: text; 
+    text-shadow: 0.05vw 0.05vw 0.05vw black;
+}
+table td{
+    height:6vw;
+    font-weight:700;
+    font-size:1.5vw;
+    background: linear-gradient(to right, black,green,blue,indigo,violet);
+    -webkit-text-fill-color: transparent; 
+            -webkit-background-clip: text;
+            text-shadow: 0.05vw 0.05vw 0.05vw black;
+}
+
+#enroll_button{
+    
+    background-color: rgb(237, 146, 219);
+    color:rgb(14, 13, 13);
+    text-shadow: 0.05vw 0.05vw 0.05vw black;
+    width:6vw;
+    height:4vw;
+    font-weight: 800;
+    font-size:1.3vw;
+    border-radius: 16%;
+    text-decoration: underline;
+    text-decoration-style: solid;
+}
+
+#add_review_button{
+    
+    background-color: rgb(147 241 142);
+    color:#0e0d19;
+    text-shadow: 0.05vw 0.05vw 0.05vw black;
+    width:8vw;
+    height:5vw;
+    font-weight: 800;
+    font-size:1.2vw;
+    border-radius: 16%;
+    text-decoration: underline;
+    text-decoration-style: solid;
+}
+
+#show_review__button{
+    
+    background-color: yellow;
+    color:rgb(27, 6, 6);
+    text-shadow: 0.05vw 0.05vw 0.05vw black;
+    width:8vw;
+    height:4.5vw;
+    font-weight: 800;
+    font-size:1.3vw;
+    border-radius: 16%;
+    text-decoration: underline;
+    text-decoration-style: solid;
+}
+
+h3{
+    margin-left:1vw;
+    /* position: relative;
+     top:25vw; 
+    left:5vw;  */
+    /* text-align: center; */
+    margin-bottom: 0.3vw;
+    color:rgb(47 193 16);
+    text-shadow: 0.1vw 0.1vw 0.1vw black;
+    box-shadow: 0.2vw 0.2vw 0.2vw grey;
+    font-weight: 900;
+    font-size: 2vw;
+    text-decoration: underline;
+    text-decoration-color:rgb(47 193 16);
+
+    box-shadow: 0.5vw 0.5vw 0.5vw black;
+
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#reviewBox{
+    margin-left:20vw;
+    /* position: fixed;
+    top:29vw;
+    left:3vw; */
+    /* text-align: center; */
+    font-weight: 700;
+    font-size: 1.4vw;
+    /* text-decoration: underline;
+    text-decoration-color:#2272FF; */
+
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#second_flex_box{
+    display:flex;
+    flex-wrap:wrap-reverse;
+
+    text-shadow: 0.1vw 0.1vw 0.1vw black;
+
+    box-shadow: 0.2vw 0.2vw 0.2vw darkgray;
+}
+
+#reviewText{
+    border:0.2vw solid blue;
+    background-color: lightcyan;
+    box-shadow: 0.15vw 0.15vw 0.15vw black;
+
+    color:blue;
+    font-size: 1.2vw;
+    text-shadow: 0.1vw 0.1vw 0.1vw black;
+}
+
+#submit_review_button{
+    /* position: relative;
+    top:4vw;
+    left:-20vw; */
+    margin-left: 1vw;
+    background-color: rgb(0, 255, 149);
+    text-align: center;
+    color:black;
+    width:6vw;
+    height:2.5vw;
+    font-weight: 700;
+    font-size:1vw;
+    border-radius: 10%;
+    text-decoration: underline;
+    text-decoration-style: solid;
+    box-shadow: 0.25vw 0.25vw 0.25vw black;
+}
+
+
+h4{
+    /* position: relative;
+     top:25vw; 
+    left:-5vw;  */
+    /* text-align: center; */
+    margin-bottom: 1vw;
+    color:deeppink;
+    text-shadow: 0.1vw 0.1vw 0.1vw black;
+    box-shadow: 0.2vw 0.2vw 0.2vw grey;
+    font-weight: 900;
+    font-size: 2vw;
+    text-decoration: underline;
+    text-decoration-color:black;
+
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#reviewDisplayBox{
+    /* position: fixed;
+    top:28vw;
+    left:70vw; */
+    /* text-align: center; */
+    font-weight: 700;
+    font-size: 1.4vw;
+    /* text-decoration: underline;
+    text-decoration-color:#2272FF; */
+
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+       
+}
+
+#flex_box{
+    position: relative;
+    top:3vw;
+    display:flex;
+    flex-wrap: wrap;
+    
+}
+
+#reviewList{
+    font-size: 2vw;
+    color:rgb(48, 244, 14);
+    text-shadow: 0.15vw 0.15vw 0.15vw black;
+    box-shadow: 0.2vw 0.2vw 0.2vw darkcyan;
+}
+
+#reviewStar{
+    visibility: hidden;
+    position: relative;
+    height:2vw;
+    width:2vw;
+    top:-2.2vw;
+    left:2vw;
+}
+
+.avgReview{
+    text-decoration-color:rgb(47 193 16);
+}

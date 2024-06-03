@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/enrolled_teachers.css')}}" />
+    <title>Enrolled Students</title>
+</head>
+<body>
+    
+    <!-- Enrolled Students Information -->
+    <img src="/static/logo.png" class="logo" alt="logo">
+    <h2> Enrolled Students </h2>
+    <img src="/static/logo.png" class="logo" id="logo1" alt="logo">
+    <table border="5">
+        <thead>
+            <td>Email</td> 
+            <td>First Name</td>
+            <td>Last Name</td>
+            <td>Batch Location</td>
+            <td>Enrolled Subject</td>
+            <td>Remove Student</td>
+        </thead>
+        {% for student in enrolled_students %}
+            <tr id="student_{{ loop.index }}">
+                <td>{{ student[0] }}</td>
+                <td>{{ student[1] }}</td>
+                <td>{{ student[2] }}</td>
+                <td>{{ student[3] }}</td>
+                <td>{{ student[4] }}</td>
+                <td><button id="remove_button" onclick="removeStudent('{{ student[0] }}', {{ loop.index }})">Remove</button></td>
+            </tr>
+        {% endfor %}
+    </table>
+    <br><br>
+
+    <script>
+        function removeStudent(email, index) {
+            if (confirm("Are you sure you want to remove this student?")) {
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "/remove_student", true);
+                xhr.setRequestHeader("Content-Type", "application/json");
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === XMLHttpRequest.DONE) {
+                        if (xhr.status === 200) {
+                            // Remove the row from the table
+                            var row = document.getElementById("student_" + index);
+                            row.parentNode.removeChild(row);
+                            alert("Student removed successfully!");
+                        } else {
+                            alert("Failed to remove student.");
+                        }
+                    }
+                };
+                xhr.send(JSON.stringify({"email": email}));
+            }
+        }
+    </script>
+</body>
+</html>

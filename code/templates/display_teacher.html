@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/display_teacher.css')}}" />
+    <title>Teachers</title>
+</head>
+<body>
+    <img src="/static/logo.png" class="logo" alt="logo">
+    <h2>Enrolled Batch Details</h2>
+    <img src="/static/logo.png" class="logo" id="logo1" alt="logo">
+    <table  border="8">
+        <tr>
+            <th>Teacher's First Name</th>
+            <th>Teacher's Last Name</th>
+            <th>Email of Teacher</th>
+            <th>Batch's Location </th>
+            <th>Pin Code </th>
+            <th>Qualification of Teacher</th>
+            <th>Subject You have Enrolled</th>
+            <th>Batch Fees</th>
+            <th>Enroll</th>
+            <th>Add Review</th>
+            <th>Show Review</th>
+
+        </tr>
+        {% for teacher in teachers %}
+        <tr>
+            <td>{{ teacher[0] }}</td>
+            <td>{{ teacher[1] }}</td>
+            <td>{{ teacher[2] }}</td>
+            <td>{{ teacher[3] }}</td>
+            <td>{{ teacher[4] }}</td>
+            <td>{{ teacher[5] }}</td>
+            <td>{{ teacher[6] }}</td>
+            <td>{{ teacher[7] }}</td>
+
+            <td><button id="enroll_button" onclick="enroll('{{ teacher[2] }}', '{{ teacher[0] }}', '{{ teacher[1] }}','{{ teacher[3] }}','{{ teacher[6] }}' )">Enroll</button></td>
+            <td><button id="add_review_button" onclick="openReviewBox('{{ teacher[2] }}', '{{ teacher[0] }}', '{{ teacher[1] }}')">Add Your Review</button></td>
+            <td><button id="show_review__button" onclick="showReview('{{ teacher[2] }}')">Show Review</button></td> <!-- New button for Show Review -->
+        </tr>
+        {% endfor %}
+    </table>
+
+    <div id="flex_box">
+    <!-- Review Box Modal -->
+    <div id="reviewBox" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" onclick="closeReviewBox()">&times;</span>
+            <h3>Add Your Review</h3>
+            <div id="second_flex_box">
+            <select name="" id="reviewText">
+                <option value="1">Worst</option>
+                <option value="2">Moderate</option>
+                <option value="3">Good</option>
+                <option value="4">Very Good</option>
+                <option value="5" selected>Excellent</option>
+              </select>
+            <!--
+            <textarea id="reviewText" rows="4" cols="50"></textarea>
+            -->
+            <button id="submit_review_button" onclick="submitReview()">Submit Review</button>
+        </div>
+        </div>
+    </div>
+
+    <div>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </div>
+
+
+    <!-- Review Display Modal -->
+    <div id="reviewDisplayBox" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeReviewDisplayBox()">&times;</span>
+            <h4>Reviews for Teacher</h4>
+            <ul id="reviewList">  
+            </ul> <!-- Container for displaying reviews -->
+
+            <!--<img id="reviewStar" src="/static/reviewStar.jpg" alt="starIcon"> -->
+            <div id="avgReview"></div>
+        </div>
+    </div>
+
+
+    <script>
+        function enroll(teacherEmail, teacherFirstName, teacherLastName, subject, location) {
+            // Send an AJAX request to check if the student is already enrolled
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "/check_enrollment?teacher_email=" + teacherEmail, true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        var response = JSON.parse(xhr.responseText);
+                        if (response.enrolled) {
+                            alert("You are already enrolled for this teacher.");
+                        } else {
+                            // If not enrolled, proceed with enrollment
+                            var studentEmail = "{{ student_email }}";
+                            var enrollXHR = new XMLHttpRequest();
+                            enrollXHR.open("POST", "/enroll", true);
+                            enrollXHR.setRequestHeader("Content-Type", "application/json");
+                            enrollXHR.onreadystatechange = function() {
+                                if (enrollXHR.readyState === XMLHttpRequest.DONE) {
+                                    if (enrollXHR.status === 200) {
+                                        alert("Enrolled successfully!");
+                                    } else {
+                                        alert("Failed to enroll. Please try again later.");
+                                    }
+                                }
+                            };
+                            enrollXHR.send(JSON.stringify({ 
+                                teacher_email: teacherEmail, 
+                                teacher_first_name: teacherFirstName, 
+                                teacher_last_name: teacherLastName,
+                                subject_name: subject,
+                                location: location,  
+                                student_email: studentEmail 
+                            }));
+                        }
+                    } else {
+                        alert("Failed to check enrollment status. Please try again later.");
+                    }
+                }
+            };
+            xhr.send();
+        }
+
+        function openReviewBox(teacherEmail, teacherFirstName, teacherLastName) {
+            
+            // Check if the student is enrolled to the selected teacher
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "/check_enrollment?teacher_email=" + teacherEmail, true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        var response = JSON.parse(xhr.responseText);
+                        if (response.enrolled) {
+                            document.getElementById('reviewBox').style.display = "block";
+                            document.getElementById('reviewText').value = "";  // Clear any previous text
+                            document.getElementById('reviewText').setAttribute('data-teacher-email', teacherEmail);
+                        } else {
+                            alert("You are not enrolled to this teacher. Please enroll first.");
+                        }
+                    } else {
+                        alert("Failed to check enrollment status. Please try again later.");
+                    }
+                }
+            };
+            xhr.send();
+
+
+        }
+
+        function closeReviewBox() {
+            document.getElementById('reviewBox').style.display = "none";
+        }
+
+        function submitReview() {
+            var teacherEmail = document.getElementById('reviewText').getAttribute('data-teacher-email');
+            var review = document.getElementById('reviewText').value;
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/add_review", true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        alert("Review added successfully!");
+                        closeReviewBox();
+                    } else {
+                        alert("Failed to add review. Please try again later.");
+                    }
+                }
+            };
+            xhr.send(JSON.stringify({ teacher_email: teacherEmail, review: review }));
+        }
+
+
+    // Function to fetch and display reviews for a teacher
+        function showReview(teacherEmail) {
+            // Send an AJAX request to fetch reviews and average review for the selected teacher
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "/get_reviews?teacher_email=" + teacherEmail, true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        var response = JSON.parse(xhr.responseText);
+                        var avgReview = response.avg_review;
+                        if (avgReview !== null) {
+                            displayReviews(avgReview);
+                            document.getElementById('reviewDisplayBox').style.display = "block"; // Display the review box
+                        } else {
+                            alert("No reviews found for this teacher.");
+                        }
+                    } else {
+                        alert("Failed to fetch reviews. Please try again later.");
+                    }
+                }
+            };
+            xhr.send();
+        }
+    
+
+        // Function to display reviews and stars
+        function displayReviews(avgReview) {
+            var reviewListContainer = document.getElementById('reviewList');
+            reviewListContainer.innerHTML = ''; // Clear previous reviews
+
+            // Display stars based on average review
+            var starRating = '';
+            for (var i = 0; i < Math.floor(avgReview); i++) {
+                starRating += '★'; // Full star
+            }
+            if (avgReview % 1 !== 0) {
+                starRating += '☆'; // Half star
+            }
+
+            var reviewElement = document.createElement('p');
+            reviewElement.textContent = "Average Review: " + starRating;
+            reviewListContainer.appendChild(reviewElement);
+
+            document.getElementById('reviewDisplayBox').style.display = "block";
+        }
+
+
+        // Function to close the review display modal
+        function closeReviewDisplayBox() {
+            document.getElementById('reviewDisplayBox').style.display = "none";
+        }
+
+    </script>
+</body>
+</html>

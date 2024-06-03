@@ -1,0 +1,16 @@
+
+“ MAKE EDUCATION EASY ”
+( Project on Finding Nearest Suitable Private Tutor )
+
+STEP FOR EXECUTION OF PROJECT
+
+1. Install Python programming language in your system.
+2. Open the terminal of your desired IDE.
+3. Type the command “pip install flask”.
+4. Then type the command “pip install requests”.
+5. Then run the Python file “app.py”
+6. Frontend will start to run showing “a clickable local host link(eg: https://localhost/5000)” message, which we can open in our browser.
+7. The application will be up and running
+
+
+

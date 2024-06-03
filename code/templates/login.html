@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/login.css') }}">
+</head>
+<body>
+    <!-- Student and Teacher Login Section -->
+    <section class="login student-teacher">
+        {% if error%}
+            <script> alert("Email or password invalid")</script>
+        {% endif %}
+        <div class="login_box">
+            <div class="left">
+                <img class="logo" src="/static/logo.png" alt="logo">
+                <div class="home" ><a href="{{ url_for('homepage')}}"> Return Home </a> </div>
+                <div class="contact">
+                    <form action="{{ url_for('login') }}" method="post">
+                        <h3>STUDENT SIGN IN</h3>
+                        <input type="email" placeholder="Email" name = "semail" >
+                        <input type="password" placeholder="Password" name = "spassword">
+                        <p class="forgotpswd"><a href="#" style="color:0977F9; font-size:1.2vw;
+                            font-weight: 600;">Forgot Password </a></p>
+                        <button type="submit" class="submit" style="color:blue;">LET'S GO</button>
+                        <p class="newtostudy" style=" font-size:1.2vw;
+                        font-weight: 600;">
+                            New Student?
+                            <a href="{{ url_for('sregister') }}" style="color: blue; font-size:1.2vw;
+                            font-weight: 600;">
+                                Sign up
+                            </a>
+                        </p>
+                    </form>
+                </div>
+                
+            </div>
+            <div id="title" class="mid-divider">
+                <div>M</div>
+                <div>A</div>
+                <div>K</div>
+                <div>E</div>
+                <div>&nbsp;&nbsp;</div>
+                <div>E</div>
+                <div>D</div>
+                <div>U</div>
+                <div>C</div>
+                <div>A</div>
+                <div>T</div>
+                <div>I</div>
+                <div>O</div>
+                <div>N</div>
+                <div>&nbsp;&nbsp;</div>
+                <div>E</div>
+                <div>A</div>
+                <div>S</div>
+                <div>Y</div>
+            </div>
+            {% if error%}
+            <script> alert("Email or password invalid")</script>
+        {% endif %}
+            <div class="right">
+                <img class="logo" src="/static/logo.png" alt="logo">
+                <div class="home" ><a href="{{ url_for('homepage')}}"> Return Home </a> </div>
+                <div class="contact">
+                    <form action="{{ url_for('login') }}" method="post">
+                        <h3>TEACHER SIGN IN</h3>
+                        <input type="email" placeholder="Email" name = "temail">
+                        <input type="password" placeholder="Password" name = "tpassword" >
+                        <p class="forgotpswd"><a href="#" style="color:rgb(48 216 45); font-size:1.2vw;
+                            font-weight: 600;" >Forgot Password </a></p>
+                        <button type="submit" class="submit" style="color:blue;">LET'S GO</button>
+                        <p class="newtostudy" style=" font-size:1.2vw;
+                        font-weight: 600;">
+                            New Teacher?
+                            <a href="{{ url_for('tregister') }}" style="color:rgb(48 216 45); font-size:1.2vw;
+                            font-weight: 600;">
+                                Sign up
+                            </a>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

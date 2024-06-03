@@ -1,0 +1,390 @@
+*{
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body{
+  background: white;
+}
+
+.container{
+  display: flex;
+  margin-right: 700px;
+  background-image: linear-gradient(to right, rgba(255,0,0,0), rgb(28, 42, 172));
+  border: 0.5vw solid blue;
+}
+
+nav {
+  position: relative;
+  height: 100vh;
+  left: 0;
+  background: linear-gradient(270deg, green, yellow);  
+  width: 35%;
+  overflow: hidden;
+  box-shadow: 0 1vw 1vw rgba(0, 0, 0, 0.1);
+  
+}
+
+.logo{
+  text-align: center;
+  display: flex;
+  margin: 10px 0 0 10px;
+}
+
+.logo1{
+  position: relative;
+  left:1vw;
+  
+  height:8vh;
+  width:6vw;
+
+  transition: all 0.2s ease-in-out;
+}
+
+.logo1:hover{
+  transform: scale(1.3);
+  box-shadow: 0.5vw 0.5vw 0.5vw black;
+}
+
+.logo span{
+  font-weight: bold;
+  padding-left: 15px;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+a{
+  position: relative;
+  color: rgb(85, 83, 83);
+  font-size: 14px;
+  display: table;
+  width: 280px;
+  padding: 10px;
+}
+
+nav .fas{
+  position: relative;
+  width: 48px;
+  height: 40px;
+  top: 14px;
+  font-size: 25px;
+  text-align: center;
+  color: #c01f3d;
+  box-shadow: 0.35vw 0.35vw 0.35vw;
+  margin-right: 1vw;
+  margin-left:1.5vw;
+}
+
+  
+
+
+.nav-item{
+  position: relative;
+  top: 12px;
+  font-size: 1.4vw;
+  color:#c01f3d;
+  text-shadow: 0.05vw 0.05vw 0.05vw black;
+
+  transition: all 0.3s ease-in-out;
+  
+}
+
+.nav-item:hover{
+  transform: scale(1.2);
+}
+
+a:hover{
+  /* background: #eee; */
+  transform: scale(1.4);
+  
+}
+
+.logout{
+  position: relative;
+    bottom: 0;
+    top: 20vw;
+    left:5vw;
+}
+
+/* Main Section */
+.main{
+  /* position: relative;
+  left:15vw;
+  padding: 20px; */
+  width: 70%;
+}
+
+.main-top{
+  display: flex;
+  width: 100%;
+}
+
+.main-top i{
+  position: absolute;
+  right: 0;
+  margin: 10px 30px;
+  color: rgb(110, 109, 109);
+  cursor: pointer;
+}
+
+.main-skills{
+  display: flex;
+  margin-top: 20px;
+}
+
+.main-skills .card{
+  width: 25%;
+  margin: 10px;
+  background: #fff;
+  text-align: center;
+  border-radius: 20px;
+  padding: 10px;
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+
+.main-skills .card h3{
+  margin: 10px;
+  text-transform: capitalize;
+}
+
+.main-skills .card p{
+  font-size: 12px;
+}
+
+.main-skills .card button{
+  background: orangered;
+  color: #fff;
+  padding: 7px 15px;
+  border-radius: 10px;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+.main-skills .card button:hover{
+  background: rgba(223, 70, 15, 0.856);
+}
+
+.main-skills .card i{
+  font-size: 22px;
+  padding: 10px;
+}
+
+/* Courses */
+.main-course{
+  margin-top: 20px;
+  text-transform: capitalize;
+}
+
+.course-box{
+  width: 100%;
+  height: 300px;
+  padding: 10px 10px 30px 10px;
+  margin-top: 10px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+
+.course-box ul{
+  list-style: none;
+  display: flex;
+}
+
+.course-box ul li{
+  margin: 10px;
+  color: gray;
+  cursor: pointer;
+}
+
+.course-box ul .active{
+  color: #000;
+  border-bottom: 1px solid #000;
+}
+
+.course-box .course{
+  display: flex;
+}
+
+.box{
+  width: 33%;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+  background: rgb(235, 233, 233);
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+
+.box p{
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.box button{
+  background: #000;
+  color: #fff;
+  padding: 7px 10px;
+  border-radius: 10px;
+  margin-top: 3rem;
+  cursor: pointer;
+}
+
+.box button:hover{
+  background: rgba(0, 0, 0, 0.842);
+}
+
+.box i{
+  font-size: 7rem;
+  float: right;
+  margin: -20px 20px 20px 0;
+}
+
+/* Button Styles */
+.btn-default {
+    border-color: rgba(24, 28, 33, 0.1);
+    background  : rgba(0, 0, 0, 0);
+    color       : #4E5155;
+}
+
+label.btn {
+    margin-bottom: 0;
+}
+
+.btn-outline-primary {
+    border-color: #26B4FF;
+    background  : transparent;
+    color       : #26B4FF;
+}
+
+.btn {
+    cursor: pointer;
+}
+
+.text-light {
+    color: #babbbc;
+}
+
+.card {
+    background-clip: padding-box;
+    box-shadow     : 0 1px 4px rgba(24, 28, 33, 0.012);
+}
+
+.row-bordered {
+    overflow: hidden;
+}
+
+.account-settings-fileinput {
+    position  : relative;
+    visibility: hidden;
+    width     : 1px;
+    height    : 1px;
+    opacity   : 0;
+}
+
+.account-settings-links .list-group-item.active {
+    font-weight: bold !important;
+}
+
+html:not(.dark-style) .account-settings-links .list-group-item.active {
+    background: transparent !important;
+}
+
+.account-settings-multiselect~.select2-container {
+    width: 100% !important;
+}
+
+.light-style .account-settings-links .list-group-item {
+    padding     : 0.85rem 1.5rem;
+    border-color: rgba(24, 28, 33, 0.03) !important;
+}
+
+.light-style .account-settings-links .list-group-item.active {
+    color: #4e5155 !important;
+}
+
+.material-style .account-settings-links .list-group-item {
+    padding     : 0.85rem 1.5rem;
+    border-color: rgba(24, 28, 33, 0.03) !important;
+}
+
+.material-style .account-settings-links .list-group-item.active {
+    color: #4e5155 !important;
+}
+
+#teacher_profile_style{
+  position: relative;
+  top:1vw;
+
+  background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%);
+  color:black;
+  text-shadow: 0.2vw 0.2vw 0.2vw deeppink;
+  text-align: center; 
+  width:50vw;
+  height:4.8vw;
+    
+}
+#teacher_heading{
+  color:black;
+  text-shadow: 0.1vw 0.1vw 0.1vw blue;
+}
+#teacher_profile_style h3{
+  position: relative;
+  top:0.5vw;
+  font-size: 3vw;
+  font-weight: 900;
+
+
+}
+
+#hr_second{
+  position: relative;
+  top:2vw;
+  
+  
+}
+
+.card-body{
+  position: relative;
+  top:2vw;
+}
+
+.welcome{
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: 600;
+  font-size: 1.2vw;
+  color:blue;
+}
+#welcome_greed{
+  font-weight: 800;
+  font-size:3vw;
+  color:deeppink;
+}
+
+h1{
+  color:black;
+  font-weight: 800;
+  text-shadow: 0.15vw 0.15vw 0.15vw blue;
+}
+.form-group p{
+  font-size: 1.5vw;
+  color:black;
+  text-shadow: 0.25vw 0.25vw 0.25vw green;
+}
+
+
+/* Add this to your CSS file */
+#logout_icon {
+  margin-right: 5px;
+}
+
+#logout_text {
+  display: none; /* Hide text by default */
+}
+
+.logout:hover #logout_text {
+  display: inline; /* Show text on hover */
+}

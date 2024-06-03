@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>view details</title>
+</head>
+<body>
+
+    <!-- Student Login Information-->
+    <h2>[Student]</h2>
+    <table border= 5>
+        <thead>
+            <td>ID</td>
+            <td>First Name</td>
+            <td>Last Name</td>
+            <td>Email</td>
+            <td>Password</td>
+            <td>Gender</td>
+        </thead>
+
+        {% for row in student_rows %}
+            <tr>
+                <td>{{row["userId"]}}</td>
+                <td>{{row["firstName"]}}</td>
+                <td>{{row["lastName"]}}</td>
+                <td>{{row["email"]}}</td>
+                <td>{{row["password"]}}</td>
+                <td>{{row["gender"]}}</td>
+            </tr>
+        {%  endfor %}
+
+    </table>
+    <br><br>
+
+
+    <!-- Techer Login Information-->
+    <h2>[Teacher]</h2>
+    <table border= 5>
+        <thead>
+            <td>ID</td>
+            <td>First Name</td>
+            <td>Last Name</td>
+            <td>Email</td>
+            <td>Password</td>
+            <td>Gender</td>
+        </thead>
+
+        {% for row in teacher_rows %}
+            <tr>
+                <td>{{row["userId"]}}</td>
+                <td>{{row["firstName"]}}</td>
+                <td>{{row["lastName"]}}</td>
+                <td>{{row["email"]}}</td>
+                <td>{{row["password"]}}</td>
+                <td>{{row["gender"]}}</td>
+            </tr>
+        {%  endfor %}
+
+    </table>
+    <br><br>
+
+
+    <!-- Techer Update Information-->
+    <h2>[TeacherUpdate]</h2>
+    <table border= 5>
+        <thead>
+            <td>Email</td>
+            <td>First Name</td>
+            <td>Last Name</td>
+            <td>MobileNo</td>
+            <td>HouseNo</td>
+            <td>StreetName</td>
+
+            <td>Town / Village</td>
+            <td>PostOffice</td>
+            <td>District</td>
+            <td>Landmark</td>
+            <td>State</td>
+            <td>PinCode</td>
+
+            <td>Qualification</td>
+            <td>Specialization</td>
+            <td>Experience</td>
+            <td>PreferredTime</td>
+            <td>TotalBatch</td>
+            <td>Fees</td>
+            
+        </thead>
+        
+    
+        {% for row in teacher_update %}
+            <tr>
+                <td>{{row["Email"]}}</td>
+                <td>{{row["FirstName"]}}</td>
+                <td>{{row["LastName"]}}</td>
+                <td>{{row["MobileNo"]}}</td>
+                <td>{{row["HouseNo"]}}</td>
+                <td>{{row["StreetName"]}}</td>
+
+                <td>{{row["TownVillage"]}}</td>
+                <td>{{row["PostOffice"]}}</td>
+                <td>{{row["District"]}}</td>
+                <td>{{row["Landmark"]}}</td>
+                <td>{{row["State"]}}</td>
+                <td>{{row["PinCode"]}}</td>
+
+                <td>{{row["Qualification"]}}</td>
+                <td>{{row["Specialization"]}}</td>
+                <td>{{row["Experience"]}}</td>
+                <td>{{row["PreferredTime"]}}</td>
+                <td>{{row["TotalBatch"]}}</td>
+                <td>{{row["Fees"]}}</td>
+            </tr>
+        {%  endfor %}
+
+    </table>
+    <br><br>
+
+        <!-- Student Update Information-->
+        <h2>[StudentUpdate]</h2>
+        <table border= 5>
+            <thead>
+                <td>Email</td>
+                <td>First Name</td>
+                <td>Last Name</td>
+                <td>MobileNo</td>
+        
+    
+                <td>Town / Village</td>
+                <td>PostOffice</td>
+                <td>District</td>
+                <td>State</td>
+                <td>PinCode</td>
+    
+                <td>Qualification</td>
+                
+            </thead>
+            
+        
+            {% for row in student_update %}
+                <tr>
+                    <td>{{row["Email"]}}</td>
+                    <td>{{row["FirstName"]}}</td>
+                    <td>{{row["LastName"]}}</td>
+                    <td>{{row["MobileNo"]}}</td>
+    
+                    <td>{{row["TownVillage"]}}</td>
+                    <td>{{row["PostOffice"]}}</td>
+                    <td>{{row["District"]}}</td>
+                    <td>{{row["State"]}}</td>
+                    <td>{{row["PinCode"]}}</td>
+    
+                    <td>{{row["Qualification"]}}</td>
+
+                </tr>
+            {%  endfor %}
+    
+        </table>
+
+    <br><br>
+
+
+
+    <!-- Techer - Student Enroll Information-->
+    <h2> [TeacherStudentEnroll]</h2>
+    <table border= 5>
+        <thead>
+            <td>Teacher Email</td>
+            <td>First Name</td>
+            <td>Last Name</td>
+    
+    
+
+            <td>Student Email</td>
+            <td>First Name</td>
+            <td>Last Name</td>
+            <td>Review</td>
+            <td>Location</td>
+            <td>Subject</td>
+
+
+
+            
+        </thead>
+        
+    
+        {% for row in enroll_details %}
+            <tr>
+                <td>{{row["teacher_email"]}}</td>
+                <td>{{row["teacher_first_name"]}}</td>
+                <td>{{row["teacher_last_name"]}}</td>
+        
+
+                <td>{{row["student_email"]}}</td>
+                <td>{{row["student_first_name"]}}</td>
+                <td>{{row["student_last_name"]}}</td>
+                <td>{{row["review"]}}</td>
+                <td>{{row["enrolled_subject"]}}</td>
+                <td>{{row["batch_location"]}}</td>
+
+            </tr>
+        {%  endfor %}
+
+    </table>
+
+<br><br>
+
+
+
+
+
+
+    <a href="/"> Go to home page</a>
+
+</body>
+</html>

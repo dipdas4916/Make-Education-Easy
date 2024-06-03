@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Student Registration</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/reg.css')}}" />
+    <!-- Add icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    {% if error %}
+        <script> alert("{{ error }}") </script>
+    {% endif %}
+    <div class="container" style="background-image: url('{{ url_for('static', filename='reg_background.jpg') }}');">
+        <form method="post" action="{{ url_for('sregister') }}">
+            <p><span class="error"> * Required Fields </span></p>
+            <img class="logo" src="/static/logo.png" alt="logo">
+            <h2>Student Register Here</h2>
+            <div class="form-container">
+                <div class="input-name">*
+                    <i class="fa fa-user lock"></i>
+                    <input type="text" placeholder="First Name" class="name" name="first_name" required>
+                    <span class="error">{{ error if error and 'first_name' in error.lower() else '' }}</span> 
+                    <span>
+                        <i class="fa fa-user lock"></i>
+                        <input type="text" placeholder="Last Name" class="name" name="last_name" required>
+                        <span class="error">{{ error if error and 'last_name' in error.lower() else '' }}</span>    
+                    </span>
+                </div>
+
+                <div class="input-name">*
+                    <i class="fa fa-envelope email"></i>
+                    <input type="text" name="email" placeholder="Email" class="text-name" required> 
+                    <span class="error">{{ error if error and 'email' in error.lower() else '' }}</span>  
+                </div>
+
+                <div class="input-name">*
+                    <i class="fa fa-lock lock "></i>
+                    <input type="password" placeholder="Password" class="text-name" name="password" required  onclick="alert(`Password Must Contain:
+                    👉 Minimum Password length 8 characters
+                    👉 An uppercase character
+                    👉 A lowercase character
+                    👉 A special character
+                    👉 A numeric character 
+                `)">
+                    <span class="error">{{ error if error and 'password' in error.lower() else '' }}</span> 
+                </div>
+
+                <div class="input-name">*
+                    <i class="fa fa-lock lock"></i>
+                    <input type="password" placeholder="Confirm Password" class="text-name" name="confirm_password" id="myInput" required
+                    onclick="alert(`❗ Entered Password & Confirm Password Must be Same ❗ `)">
+                    <span class="error">{{ error if error and 'passwords' in error.lower() else '' }}</span> 
+                    <input type="checkbox" onclick="myFunction()"><label style="margin-right: 30px">Show Password</label> 
+                </div>
+
+                <div class="input-name" required>*
+                    <label style="margin-right: 40px;color:white">GENDER:</label>
+                    <input type="radio" class="radio-button" name="gender" value="male">
+                    <label style="margin-right: 40px;color:white">MALE</label>
+
+                    <input type="radio" class="radio-button" name="gender" value="female">
+                    <label style="margin-right: 40px;color:white">FEMALE</label>
+
+                    <input type="radio" class="radio-button" name="gender" value="other">
+                    <label style="margin-right: 40px;color:white">OTHER</label>
+
+                    <span class="error">{{ error if error and 'gender' in error.lower() else '' }}</span>    
+                </div>
+
+                <div class="input-name">
+                    <input type="submit" class="button" value="Register">
+                </div>
+            </div>
+        </form>
+    </div>
+    
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myInput");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+    </script>
+</body>
+</html>

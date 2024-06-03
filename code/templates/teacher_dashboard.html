@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Teacher Dashboard</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/teacher_dashboard.css')}}" />
+    <!-- Font Awesome Cdn Link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/> 
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <ul>
+                <li>
+                    <a href="#teacher_profile_style" class="logo">
+                        <img class="logo1" src="/static/logo.png" alt="logo">
+                        <span class="nav-item">DashBoard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('homepage')}}">
+                        <i class="fas fa-home"></i>
+                        <span class="nav-item">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('teacher_update')}}">
+                        <i class="fas fa-user"></i>
+                        <span class="nav-item">Create Profile</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('enrolled_batch_teacher')}}">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <span class="nav-item">Enrolled Batch</span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="#" class="logout" onclick="logout()">
+                      <i class="fas fa-sign-out-alt" id="logout_icon"></i>
+                      <span id="logout_text">Logout</span>
+                    </a>
+                  </li>
+            </ul>
+        </nav>
+
+        <section class="main">
+            <div class="list-group list-group-flush account-settings-links">
+                <a id="teacher_heading" class="list-group-item list-group-item-action active" data-toggle="list"
+                    href="#account-general" style="color: black; text-align: center; font-size: 20px; font-weight: 900;
+                    font-size:2vw;
+                    text-decoration: underline;
+                    "> Teacher Dashboard </a>
+            </div>
+
+            <div class="tab-pane fade active show" id="account-general">
+                <!-- 
+                <div class="card-body media align-items-center">
+                    <img src="profile.png" alt=""
+                        class="d-block ui-w-80">
+                    <div class="media-body ml-4">
+                        <label class="btn btn-outline-primary">
+                            Upload new photo
+                            <input type="file" class="account-settings-fileinput">
+                        </label> &nbsp;
+                        <button type="button" class="btn btn-default md-btn-flat">Reset</button>
+                        <div class="text-light small mt-1">Allowed JPG, GIF or PNG. Max size of 800K</div>
+                    </div>
+                </div>
+                -->
+                <hr class="border-light m-0">
+                <div id="teacher_profile_style">
+                    <h3>Teacher Profile</h3>
+                </div>
+                <hr id="hr_second" class="border-light m-0">
+                <div class="card-body">
+                    
+                    <div class="form-group">
+                        <h1> Welcome , {{name}} </h1>
+                        <p>Email: {{ email }}</p>
+                        <p> Address : {{address}} </p>
+                    </div>
+
+                </div>
+            </div>
+
+            <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+            <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
+
+            <script type="text/javascript">
+
+            </script>
+        </section>
+    </div>
+
+    <script>
+        function logout() {
+          sessionStorage.clear();
+          // Redirect to logout endpoint
+          window.location.href = "/logout";
+        }
+      </script>
+    
+</body>
+</html>

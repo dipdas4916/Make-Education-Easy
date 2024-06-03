@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title> Registration Form</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/t_update.css') }}">
+    </head>
+    
+    <body> 
+        <div class="container"> 
+            <img class="logo" src="/static/logo.png" alt="logo">
+            <h2> Profile Creation Form </h2>
+            <div class="form-container">
+                <form action="{{ url_for('teacher_update') }}" method="post">
+
+                    <div class="input-name">
+                        First Name  <input type="text" class="name1" name = "first_name" value = {{teacher_fname}} >
+
+                        <span> 
+                            Last Name <input type="text" class="name2" name = "last_name" value = {{teacher_lname}} >
+                        </span>
+                            
+                    </div>
+
+                    <div class="input-name">
+                        Email <input type="text" class="text-name_email" name ="email" value = {{teacher_email}} > 
+
+                    <span>   
+                        Mobile No <input type="text" class="text-name1" name = "mobile_no" required>
+                    </span>
+                    </div>
+
+                    <div class="input-name">
+                        House No <input type="text" class="text-name_house" name="house_no" >
+
+                        <span> 
+                            Street Name <input type="text" class="text-name2" name="street_name" required> 
+                        </span>
+                    </div>
+
+                    <div class="input-name">
+                        Town/Village<input type="text" class="text-name_town" name="town_village" required>
+
+                        <span> 
+                            Post Office <input type="text" class="text-name2" name ="post_office" required> 
+                        </span>
+                    </div>
+
+                    <div class="input-name">
+                        PIN Code<input type="text" class="text-name_pin" name = "pin_code" required>
+
+                        <span> 
+                            District <input type="text" class="text-name_district" name = "district" required> 
+                        </span>
+                    </div>
+
+                    <div class="input-name">
+                        Landmark <input type="text" class="text-name_pin" name="landmark" required>
+
+                        <span> 
+                            State <input type="text" class="text-name_state" name ="state" required> 
+                        </span>
+                    </div>
+
+                    <div class="input-name">
+                        <label for="Qualification">Qualification </label>
+                        <select name="Qualification" class="Qualification" required>
+                            <option value="Select your degree"> Select your degree </option>
+                            <option value="Secondary(10th pass out)"> Secondary(10th pass out) </option>
+                            <option value="Higher Secondary(12th pass out)"> Higher Secondary(12th pass out) </option>
+                            <option value="Graduation"> Graduation </option>
+                            <option value="Post Graduation"> Post Graduation </option>
+                            <option value="Ph.D"> Ph.D </option>
+                            <option value="Postdoc"> Postdoc </option>
+                            <option value="Others"> Others </option>
+                        </select>
+                    </div>
+
+                    <div class="input-name">
+                        Specialization <input type="text" class="Specialization" name="Specialization" required>
+                    </div>
+
+                    <div class="input-name">
+                        Experience(In years) <input type="text" class="experience" name="experience" required>
+                    </div>
+
+                    <div class="input-name" required>
+                        <label class="batch_time"> Preferred Time </label> <br> <br>
+
+                        <input type="checkbox" name="preferred_time" value="Morning">
+                        <label style="margin-right: 30px">Morning</label>
+
+                        <input type="checkbox" name="preferred_time" value="Noon">
+                        <label style="margin-right: 30px">Noon</label>
+
+                        <input type="checkbox" name="preferred_time" value="Afternoon">
+                        <label style="margin-right: 30px">Afternoon</label>
+
+                        <input type="checkbox" name="preferred_time" value="Evening">
+                        <label style="margin-right: 30px">Evening</label>
+
+                    </div>
+
+                    <div class="input-name">
+                        Total Batch <input type="text" class="tb" name = "total_batch">
+
+                        <span> 
+                            Fees(Per month) <input type="text" class="fees" name="fees" required> 
+                        </span>
+                    </div>
+
+                    <div class="input-name">
+                        <input type="submit" class="button" value="SAVE MY DETAILS">
+                    </div>
+                </form>
+                <h2><a href="{{ url_for('tdashboard')}}">Return</a></h2>
+            </div>
+        </div>
+    </body>
+</html>
